@@ -72,6 +72,7 @@
  * @param {number} [args.navbar_style.fullscreenRatio=4/3] - Fullscreen icon ratio (width/height)
  * @param {number} [args.navbar_style.fullscreenThickness=2] - Fullscreen icon thickness in pixels
  * @param {boolean} [args.navbar_style.enableStereo=false] - enable Stereo
+ *  @param {boolean} [args.navbar_style.enableFullScreen=false] - enable fullscreen
  * @param {number} [args.eyes_offset=5] - Eyes offset in VR mode
  * @param {string} [args.loading_msg=Loading…] - Loading message
  * @param {string} [args.loading_img=null] - Loading image URL or path (absolute or relative)

@@ -72,6 +72,7 @@ var PSVNavBar = function(psv) {
      * @param {number} [new_style.virtualRealityRatio=4/3] - Virtual reality icon ratio (width / height)
      * @param {number} [new_style.virtualRealityBorderRadius=2] - Virtual reality icon border radius in pixels
      * @param {boolean} [new_style.enableStereo=false] - enable Stereo
+     * @param {boolean} [new_style.enableFullscreen=false] - enable Fullscreen
      * @return {void}
      **/
 
@@ -113,8 +114,10 @@ var PSVNavBar = function(psv) {
         container.appendChild(zoom.getButton());
 
         // Fullscreen button
-        fullscreen = new PSVNavBarButton(psv, 'fullscreen', style);
-        container.appendChild(fullscreen.getButton());
+        if (style.enableFullscreen) {
+            fullscreen = new PSVNavBarButton(psv, 'fullscreen', style);
+            container.appendChild(fullscreen.getButton());
+        }
 
         if (Sphoords.isDeviceOrientationSupported) {
             // Device orientation button
@@ -122,7 +125,6 @@ var PSVNavBar = function(psv) {
             container.appendChild(orientation.getButton());
 
             // Virtual reality button
-            console.log(style.enableStereo);
             if (style.enableStereo) {
                 vr = new PSVNavBarButton(psv, 'virtual-reality', style);
                 container.appendChild(vr.getButton());
@@ -271,13 +273,15 @@ var PSVNavBar = function(psv) {
         virtualRealityBorderRadius: 2,
 
         //Enable stereo, default false
-        enableStereo : false
+        enableStereo : false,
+        //Enable fullscreen, default true
+        enableFullscreen : true
     };
 
     // Properties types
     var colors = ['backgroundColor', 'buttonsColor', 'buttonsBackgroundColor', 'activeButtonsBackgroundColor'];
     var numbers = ['buttonsHeight', 'autorotateThickness', 'zoomRangeWidth', 'zoomRangeThickness', 'zoomRangeDisk', 'fullscreenRatio', 'fullscreenThickness'];
-    var enabled = ['enableStereo'];
+    var enabled = ['enableStereo','enableFullscreen'];
 
     // Some useful attributes
     var container;
